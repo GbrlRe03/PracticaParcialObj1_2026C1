@@ -1,0 +1,104 @@
+import seres.*
+import territorios.*
+
+describe "Test Seres Especiales" {
+
+    const elfoSilvano1= new ElfoSilvano()
+    const hobbit1= new Hobbit()
+    const enanoHerrero1= new EnanoHerrero()
+    const territorio1= new Territorio()
+    method initialize(){
+        territorio1.añadirSerATerritorio(elfoSilvano1)
+        territorio1.añadirSerATerritorio(hobbit1)
+        territorio1.añadirSerATerritorio(enanoHerrero1)
+        hobbit1.organizarFiesta()
+    }
+  test "description" {
+    assert.equals(territorio1.seresEnTerritorio(), [elfoSilvano1,hobbit1,enanoHerrero1])
+  }
+
+  test "a"{
+    assert.equals(elfoSilvano1.habilidad(),580)
+  }
+  test "b"{
+    assert.equals(hobbit1.habilidad(),1100)
+  }
+  test "c"{
+    assert.equals(enanoHerrero1.habilidad(),300)
+  }
+  test"d"{
+    assert.equals(hobbit1.cantAmigos(), 45)
+  }
+  test"e"{
+    assert.equals(hobbit1.esInmortal(), true)
+  }
+  test"f"{
+    assert.equals(territorio1.promedioHabilidad(), 660)
+  }
+  test"g"{
+    assert.equals(territorio1.valorMaximoHabilidad(), 1100)
+  }
+  test"h"{
+    assert.equals(territorio1.seresTorpes(), [elfoSilvano1,enanoHerrero1])
+  }
+  test"i"{
+    assert.notThat(territorio1.haySerMortal())
+  }
+  test"j"{
+    territorio1.huboTorneo()
+    assert.equals(elfoSilvano1.cancionesSabidas(), 40)
+  }
+  test "k"{
+    territorio1.huboTorneo()
+    assert.equals(hobbit1.cantAmigos(), 53)
+  }
+  test"l"{
+    territorio1.huboTorneo()
+    assert.equals(enanoHerrero1.ira(),500)
+  }
+  test"m"{
+    territorio1.huboTorneo()
+    assert.equals(territorio1.seresTorpes(), [elfoSilvano1])
+  }
+  test "n"{
+    territorio1.huboTorneo()
+    territorio1.huboEpifania()
+    assert.equals(elfoSilvano1.cancionesSabidas(), 80)
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+describe "test cueva" {
+  const elfo1= new Elfo()
+  const elfo2= new Elfo()
+  const hobbit1= new Hobbit()
+  const enano1= new Enano()
+  method initialize(){
+    cuevaSeres.añadirSerAbajo(elfo1)
+    cuevaSeres.añadirSerAbajo(elfo2)
+    cuevaSeres.añadirSerArriba(hobbit1)
+    cuevaSeres.añadirSerArriba(enano1)
+
+  }
+  test "cuevaTotal" {
+    assert.equals(cuevaSeres.seresTotales(), [elfo1,elfo2,hobbit1,enano1])
+  }
+}
